@@ -1,7 +1,7 @@
 // Garden Gnome Software - Skin
 // Pano2VR 6.1.13/18080
 // Filename: Airbnb.ggsk
-// Generated 2024-02-24T06:44:24
+// Generated 2024-02-24T06:51:31
 
 function pano2vrSkin(player,base) {
 	player.addVariable('indicativo', 2, false);
@@ -19712,15 +19712,14 @@ function pano2vrSkin(player,base) {
 		el.className='ggskin ggskin_textdiv';
 		el.ggTextDiv=els;
 		el.ggId="tt_enter_vr";
-		el.ggDx=0;
 		el.ggParameter={ rx:0,ry:0,a:0,sx:1,sy:1 };
 		el.ggVisible=false;
 		el.className="ggskin ggskin_text ";
 		el.ggType='text';
 		hs ='';
 		hs+='height : 20px;';
-		hs+='left : -10000px;';
 		hs+='position : absolute;';
+		hs+='right : -15px;';
 		hs+='top : 32px;';
 		hs+='visibility : hidden;';
 		hs+='width : 100px;';
@@ -19731,7 +19730,7 @@ function pano2vrSkin(player,base) {
 		hs ='position:absolute;';
 		hs += 'box-sizing: border-box;';
 		hs+='cursor: default;';
-		hs+='left: 0px;';
+		hs+='right: 0px;';
 		hs+='top:  0px;';
 		hs+='width: auto;';
 		hs+='height: auto;';
@@ -19873,19 +19872,6 @@ function pano2vrSkin(player,base) {
 			}
 		}
 		me._tt_enter_vr.ggUpdatePosition=function (useTransition) {
-			if (useTransition==='undefined') {
-				useTransition = false;
-			}
-			if (!useTransition) {
-				this.style[domTransition]='none';
-			}
-			if (this.parentNode) {
-				var pw=this.parentNode.clientWidth;
-				var w=this.offsetWidth + 0;
-					this.style.left=(this.ggDx + pw/2 - w/2) + 'px';
-			}
-			this.style[domTransition]='left 0';
-			this.ggTextDiv.style.left=((98-this.ggTextDiv.offsetWidth)/2) + 'px';
 		}
 		me._enter_vr.appendChild(me._tt_enter_vr);
 		me.divSkin.appendChild(me._enter_vr);
@@ -20820,15 +20806,14 @@ function pano2vrSkin(player,base) {
 		el.className='ggskin ggskin_textdiv';
 		el.ggTextDiv=els;
 		el.ggId="tt_fullscreen";
-		el.ggDx=0;
 		el.ggParameter={ rx:0,ry:0,a:0,sx:1,sy:1 };
 		el.ggVisible=false;
 		el.className="ggskin ggskin_text ";
 		el.ggType='text';
 		hs ='';
 		hs+='height : 20px;';
-		hs+='left : -10000px;';
 		hs+='position : absolute;';
+		hs+='right : -10px;';
 		hs+='top : 32px;';
 		hs+='visibility : hidden;';
 		hs+='width : 100px;';
@@ -20839,7 +20824,7 @@ function pano2vrSkin(player,base) {
 		hs ='position:absolute;';
 		hs += 'box-sizing: border-box;';
 		hs+='cursor: default;';
-		hs+='left: 0px;';
+		hs+='right: 0px;';
 		hs+='top:  0px;';
 		hs+='width: auto;';
 		hs+='height: auto;';
@@ -20864,32 +20849,6 @@ function pano2vrSkin(player,base) {
 			}
 			return player.getCurrentNode();
 		}
-		me._tt_fullscreen.logicBlock_position = function() {
-			var newLogicStatePosition;
-			if (
-				((player.getHasTouch() == true))
-			)
-			{
-				newLogicStatePosition = 0;
-			}
-			else {
-				newLogicStatePosition = -1;
-			}
-			if (me._tt_fullscreen.ggCurrentLogicStatePosition != newLogicStatePosition) {
-				me._tt_fullscreen.ggCurrentLogicStatePosition = newLogicStatePosition;
-				me._tt_fullscreen.style[domTransition]='left 0s, top 0s';
-				if (me._tt_fullscreen.ggCurrentLogicStatePosition == 0) {
-					this.ggDx = 0;
-					me._tt_fullscreen.style.top='-25px';
-					me._tt_fullscreen.ggUpdatePosition(true);
-				}
-				else {
-					me._tt_fullscreen.ggDx=0;
-					me._tt_fullscreen.style.top='32px';
-					me._tt_fullscreen.ggUpdatePosition(true);
-				}
-			}
-		}
 		me._tt_fullscreen.logicBlock_visible = function() {
 			var newLogicStateVisible;
 			if (
@@ -20903,7 +20862,7 @@ function pano2vrSkin(player,base) {
 			}
 			if (me._tt_fullscreen.ggCurrentLogicStateVisible != newLogicStateVisible) {
 				me._tt_fullscreen.ggCurrentLogicStateVisible = newLogicStateVisible;
-				me._tt_fullscreen.style[domTransition]='left 0s, top 0s';
+				me._tt_fullscreen.style[domTransition]='';
 				if (me._tt_fullscreen.ggCurrentLogicStateVisible == 0) {
 					me._tt_fullscreen.style.visibility=(Number(me._tt_fullscreen.style.opacity)>0||!me._tt_fullscreen.style.opacity)?'inherit':'hidden';
 					me._tt_fullscreen.ggVisible=true;
@@ -20917,24 +20876,86 @@ function pano2vrSkin(player,base) {
 		me._tt_fullscreen.logicBlock_text = function() {
 			var newLogicStateText;
 			if (
-				((player.getIsFullscreen() == false))
+				((player.getIsFullscreen() == false)) && 
+				((player.getVariableValue('POR') == true))
 			)
 			{
 				newLogicStateText = 0;
 			}
 			else if (
-				((player.getIsFullscreen() == true))
+				((player.getIsFullscreen() == true)) && 
+				((player.getVariableValue('POR') == true))
 			)
 			{
 				newLogicStateText = 1;
+			}
+			else if (
+				((player.getIsFullscreen() == false)) && 
+				((player.getVariableValue('ENG') == true))
+			)
+			{
+				newLogicStateText = 2;
+			}
+			else if (
+				((player.getIsFullscreen() == true)) && 
+				((player.getVariableValue('ENG') == true))
+			)
+			{
+				newLogicStateText = 3;
+			}
+			else if (
+				((player.getIsFullscreen() == false)) && 
+				((player.getVariableValue('ESP') == true))
+			)
+			{
+				newLogicStateText = 4;
+			}
+			else if (
+				((player.getIsFullscreen() == true)) && 
+				((player.getVariableValue('ESP') == true))
+			)
+			{
+				newLogicStateText = 5;
 			}
 			else {
 				newLogicStateText = -1;
 			}
 			if (me._tt_fullscreen.ggCurrentLogicStateText != newLogicStateText) {
 				me._tt_fullscreen.ggCurrentLogicStateText = newLogicStateText;
-				me._tt_fullscreen.style[domTransition]='left 0s, top 0s';
+				me._tt_fullscreen.style[domTransition]='';
 				if (me._tt_fullscreen.ggCurrentLogicStateText == 0) {
+					me._tt_fullscreen.ggText="Tela Cheia";
+					me._tt_fullscreen__text.innerHTML=me._tt_fullscreen.ggText;
+					if (me._tt_fullscreen.ggUpdateText) {
+					me._tt_fullscreen.ggUpdateText=function() {
+						var hs="Tela Cheia";
+						if (hs!=this.ggText) {
+							this.ggText=hs;
+							this.ggTextDiv.innerHTML=hs;
+							if (this.ggUpdatePosition) this.ggUpdatePosition();
+						}
+					}
+					} else {
+						if (me._tt_fullscreen.ggUpdatePosition) me._tt_fullscreen.ggUpdatePosition();
+					}
+				}
+				else if (me._tt_fullscreen.ggCurrentLogicStateText == 1) {
+					me._tt_fullscreen.ggText="Sair Tela Cheia";
+					me._tt_fullscreen__text.innerHTML=me._tt_fullscreen.ggText;
+					if (me._tt_fullscreen.ggUpdateText) {
+					me._tt_fullscreen.ggUpdateText=function() {
+						var hs="Sair Tela Cheia";
+						if (hs!=this.ggText) {
+							this.ggText=hs;
+							this.ggTextDiv.innerHTML=hs;
+							if (this.ggUpdatePosition) this.ggUpdatePosition();
+						}
+					}
+					} else {
+						if (me._tt_fullscreen.ggUpdatePosition) me._tt_fullscreen.ggUpdatePosition();
+					}
+				}
+				else if (me._tt_fullscreen.ggCurrentLogicStateText == 2) {
 					me._tt_fullscreen.ggText="Enter Fullscreen";
 					me._tt_fullscreen__text.innerHTML=me._tt_fullscreen.ggText;
 					if (me._tt_fullscreen.ggUpdateText) {
@@ -20950,12 +20971,44 @@ function pano2vrSkin(player,base) {
 						if (me._tt_fullscreen.ggUpdatePosition) me._tt_fullscreen.ggUpdatePosition();
 					}
 				}
-				else if (me._tt_fullscreen.ggCurrentLogicStateText == 1) {
+				else if (me._tt_fullscreen.ggCurrentLogicStateText == 3) {
 					me._tt_fullscreen.ggText="Exit Fullscreen";
 					me._tt_fullscreen__text.innerHTML=me._tt_fullscreen.ggText;
 					if (me._tt_fullscreen.ggUpdateText) {
 					me._tt_fullscreen.ggUpdateText=function() {
 						var hs="Exit Fullscreen";
+						if (hs!=this.ggText) {
+							this.ggText=hs;
+							this.ggTextDiv.innerHTML=hs;
+							if (this.ggUpdatePosition) this.ggUpdatePosition();
+						}
+					}
+					} else {
+						if (me._tt_fullscreen.ggUpdatePosition) me._tt_fullscreen.ggUpdatePosition();
+					}
+				}
+				else if (me._tt_fullscreen.ggCurrentLogicStateText == 4) {
+					me._tt_fullscreen.ggText="Maximizar";
+					me._tt_fullscreen__text.innerHTML=me._tt_fullscreen.ggText;
+					if (me._tt_fullscreen.ggUpdateText) {
+					me._tt_fullscreen.ggUpdateText=function() {
+						var hs="Maximizar";
+						if (hs!=this.ggText) {
+							this.ggText=hs;
+							this.ggTextDiv.innerHTML=hs;
+							if (this.ggUpdatePosition) this.ggUpdatePosition();
+						}
+					}
+					} else {
+						if (me._tt_fullscreen.ggUpdatePosition) me._tt_fullscreen.ggUpdatePosition();
+					}
+				}
+				else if (me._tt_fullscreen.ggCurrentLogicStateText == 5) {
+					me._tt_fullscreen.ggText="Minimizar";
+					me._tt_fullscreen__text.innerHTML=me._tt_fullscreen.ggText;
+					if (me._tt_fullscreen.ggUpdateText) {
+					me._tt_fullscreen.ggUpdateText=function() {
+						var hs="Minimizar";
 						if (hs!=this.ggText) {
 							this.ggText=hs;
 							this.ggTextDiv.innerHTML=hs;
@@ -20985,19 +21038,6 @@ function pano2vrSkin(player,base) {
 			}
 		}
 		me._tt_fullscreen.ggUpdatePosition=function (useTransition) {
-			if (useTransition==='undefined') {
-				useTransition = false;
-			}
-			if (!useTransition) {
-				this.style[domTransition]='none';
-			}
-			if (this.parentNode) {
-				var pw=this.parentNode.clientWidth;
-				var w=this.offsetWidth + 0;
-					this.style.left=(this.ggDx + pw/2 - w/2) + 'px';
-			}
-			this.style[domTransition]='left 0';
-			this.ggTextDiv.style.left=((98-this.ggTextDiv.offsetWidth)/2) + 'px';
 		}
 		me._button_fullscreen.appendChild(me._tt_fullscreen);
 		me.divSkin.appendChild(me._button_fullscreen);
@@ -24379,19 +24419,16 @@ this.__div.style.top = vs.height / 2 + "px";
 	me._tt_mute.logicBlock_text();
 	me._iniciar0.logicBlock_text();
 	me._indicativo2.logicBlock_text();
-	me._tt_fullscreen.logicBlock_position();
 	me._enter_vr.logicBlock_visible();
 	player.addListener('sizechanged', function(args) { me._quarto_e_lavanderiai.logicBlock_position();me._quarto_e_lavanderiai.logicBlock_scaling();me._cozinha_e_sala_de_jantari.logicBlock_position();me._cozinha_e_sala_de_jantari.logicBlock_scaling();me._no_inclusoi.logicBlock_position();me._no_inclusoi.logicBlock_scaling();me._entretenimentoi.logicBlock_position();me._entretenimentoi.logicBlock_scaling();me._internet_e_escritrioi.logicBlock_position();me._internet_e_escritrioi.logicBlock_scaling();me._privacidade_e_seguranai.logicBlock_position();me._privacidade_e_seguranai.logicBlock_scaling();me._estacionamento_e_instalaesi.logicBlock_position();me._estacionamento_e_instalaesi.logicBlock_scaling();me._climatizaoi.logicBlock_position();me._climatizaoi.logicBlock_scaling();me._banheiroi.logicBlock_position();me._banheiroi.logicBlock_scaling();me._serviosi.logicBlock_position();me._serviosi.logicBlock_scaling();me._info.logicBlock_position();me._info.logicBlock_scaling();me._sobre_o_lugar.logicBlock_position();me._sobre_o_lugar.logicBlock_scaling();me._menu.logicBlock_size();me._banheiro_menu.logicBlock_position();me._banheiro_menu.logicBlock_scaling();me._cozinha_menu.logicBlock_position();me._cozinha_menu.logicBlock_scaling();me._frigobar_menu.logicBlock_position();me._frigobar_menu.logicBlock_scaling();me._quarto_menu.logicBlock_position();me._quarto_menu.logicBlock_scaling();me._garagem_menu.logicBlock_position();me._garagem_menu.logicBlock_scaling();me._info_menu.logicBlock_position();me._info_menu.logicBlock_scaling();me._button_mute.logicBlock_position();me._button_fullscreen.logicBlock_position();me._indicaes_de_uso.logicBlock_position();me._indicaes_de_uso.logicBlock_scaling(); });
 	player.addListener('fullscreenenter', function(args) { me._button_image_normalscreen.logicBlock_visible();me._button_image_fullscreen.logicBlock_visible();me._tt_fullscreen.logicBlock_text(); });
 	player.addListener('fullscreenexit', function(args) { me._button_image_normalscreen.logicBlock_visible();me._button_image_fullscreen.logicBlock_visible();me._tt_fullscreen.logicBlock_text(); });
-	player.addListener('changenode', function(args) { me._quarto_e_lavanderiai.logicBlock_visible();me._bsico0.logicBlock_text();me._cabides.logicBlock_text();me._roupa_de_cama.logicBlock_text();me._cobertores_e_travesseiros_extras.logicBlock_text();me._varal_para_secar_roupas.logicBlock_text();me._local_para_guardar_as_roupas_closet.logicBlock_text();me._cozinha_e_sala_de_jantari.logicBlock_visible();me._bsico.logicBlock_text();me._microondas.logicBlock_text();me._louas_e_talheres.logicBlock_text();me._frigobar0.logicBlock_text();me._fogo.logicBlock_text();me._chaleira_de_gua_quente.logicBlock_text();me._no_inclusoi.logicBlock_visible();me._cmeras_de_segurana_na_propriedade.logicBlock_text();me._mquina_de_lavar.logicBlock_text();me._secadora.logicBlock_text();me._frigobar.logicBlock_text();me._detector_de_fumaa.logicBlock_text();me._alarme_de_monxido_de_carbono.logicBlock_text();me._aquecimento_central.logicBlock_text();me._entretenimentoi.logicBlock_visible();me._conexo_ethernet.logicBlock_text();me._hdtv_com_tv_a_cabo_premium.logicBlock_text();me._internet_e_escritrioi.logicBlock_visible();me._wifi0.logicBlock_text();me._espao_de_trabalho_exclusivo1.logicBlock_text();me._privacidade_e_seguranai.logicBlock_visible();me._tranca_na_porta_do_quarto.logicBlock_text();me._estacionamento_e_instalaesi.logicBlock_visible();me._garagem_residencial_gratuita_na_propriedade.logicBlock_text();me._climatizaoi.logicBlock_visible();me._ventilador_de_teto.logicBlock_text();me._banheiroi.logicBlock_visible();me._secador_de_cabelo.logicBlock_text();me._xampu.logicBlock_text();me._condicionador.logicBlock_text();me._sabonete_para_o_corpo.logicBlock_text();me._agua_quente.logicBlock_text();me._serviosi.logicBlock_visible();me._wifi.logicBlock_text();me._espao_de_trabalho_exclusivo0.logicBlock_text();me._banheiro_.logicBlock_text();me._quarto_e_lavanderiab.logicBlock_text();me._entretenimentob.logicBlock_text();me._climatizaob.logicBlock_text();me._privacidade_e_seguranab.logicBlock_text();me._internet_e_escritriob.logicBlock_text();me._cozinha_e_sala_de_jantarb.logicBlock_text();me._estacionamento_e_instalaesb.logicBlock_text();me._serviosb.logicBlock_text();me._no_inclusob.logicBlock_text();me._sobre_o_lugar.logicBlock_visible();me._sobre_o_lugar0.logicBlock_text();me._espao_de_trabalho_exclusivo.logicBlock_text();me._durante_sua_estadia.logicBlock_text();me._banheiro_menu.logicBlock_text();me._cozinha_menu.logicBlock_text();me._frigobar_menu.logicBlock_text();me._quarto_menu.logicBlock_text();me._quarto_menu.logicBlock_textcolor();me._garagem_menu.logicBlock_text();me._info_menu.logicBlock_text();me._tt_enter_vr.logicBlock_text();me._tt_unmute.logicBlock_text();me._tt_mute.logicBlock_text();me._iniciar0.logicBlock_text();me._indicativo2.logicBlock_text(); });
-	player.addListener('configloaded', function(args) { me._tt_fullscreen.logicBlock_position(); });
+	player.addListener('changenode', function(args) { me._quarto_e_lavanderiai.logicBlock_visible();me._bsico0.logicBlock_text();me._cabides.logicBlock_text();me._roupa_de_cama.logicBlock_text();me._cobertores_e_travesseiros_extras.logicBlock_text();me._varal_para_secar_roupas.logicBlock_text();me._local_para_guardar_as_roupas_closet.logicBlock_text();me._cozinha_e_sala_de_jantari.logicBlock_visible();me._bsico.logicBlock_text();me._microondas.logicBlock_text();me._louas_e_talheres.logicBlock_text();me._frigobar0.logicBlock_text();me._fogo.logicBlock_text();me._chaleira_de_gua_quente.logicBlock_text();me._no_inclusoi.logicBlock_visible();me._cmeras_de_segurana_na_propriedade.logicBlock_text();me._mquina_de_lavar.logicBlock_text();me._secadora.logicBlock_text();me._frigobar.logicBlock_text();me._detector_de_fumaa.logicBlock_text();me._alarme_de_monxido_de_carbono.logicBlock_text();me._aquecimento_central.logicBlock_text();me._entretenimentoi.logicBlock_visible();me._conexo_ethernet.logicBlock_text();me._hdtv_com_tv_a_cabo_premium.logicBlock_text();me._internet_e_escritrioi.logicBlock_visible();me._wifi0.logicBlock_text();me._espao_de_trabalho_exclusivo1.logicBlock_text();me._privacidade_e_seguranai.logicBlock_visible();me._tranca_na_porta_do_quarto.logicBlock_text();me._estacionamento_e_instalaesi.logicBlock_visible();me._garagem_residencial_gratuita_na_propriedade.logicBlock_text();me._climatizaoi.logicBlock_visible();me._ventilador_de_teto.logicBlock_text();me._banheiroi.logicBlock_visible();me._secador_de_cabelo.logicBlock_text();me._xampu.logicBlock_text();me._condicionador.logicBlock_text();me._sabonete_para_o_corpo.logicBlock_text();me._agua_quente.logicBlock_text();me._serviosi.logicBlock_visible();me._wifi.logicBlock_text();me._espao_de_trabalho_exclusivo0.logicBlock_text();me._banheiro_.logicBlock_text();me._quarto_e_lavanderiab.logicBlock_text();me._entretenimentob.logicBlock_text();me._climatizaob.logicBlock_text();me._privacidade_e_seguranab.logicBlock_text();me._internet_e_escritriob.logicBlock_text();me._cozinha_e_sala_de_jantarb.logicBlock_text();me._estacionamento_e_instalaesb.logicBlock_text();me._serviosb.logicBlock_text();me._no_inclusob.logicBlock_text();me._sobre_o_lugar.logicBlock_visible();me._sobre_o_lugar0.logicBlock_text();me._espao_de_trabalho_exclusivo.logicBlock_text();me._durante_sua_estadia.logicBlock_text();me._banheiro_menu.logicBlock_text();me._cozinha_menu.logicBlock_text();me._frigobar_menu.logicBlock_text();me._quarto_menu.logicBlock_text();me._quarto_menu.logicBlock_textcolor();me._garagem_menu.logicBlock_text();me._info_menu.logicBlock_text();me._tt_enter_vr.logicBlock_text();me._tt_unmute.logicBlock_text();me._tt_mute.logicBlock_text();me._tt_fullscreen.logicBlock_text();me._iniciar0.logicBlock_text();me._indicativo2.logicBlock_text(); });
 	player.addListener('vrchanged', function(args) { me._enter_vr.logicBlock_visible(); });
-	player.addListener('hastouch', function(args) { me._tt_fullscreen.logicBlock_position(); });
 	player.addListener('varchanged_INFO', function(args) { me._quarto_e_lavanderiai.logicBlock_visible();me._cozinha_e_sala_de_jantari.logicBlock_visible();me._no_inclusoi.logicBlock_visible();me._entretenimentoi.logicBlock_visible();me._internet_e_escritrioi.logicBlock_visible();me._privacidade_e_seguranai.logicBlock_visible();me._estacionamento_e_instalaesi.logicBlock_visible();me._climatizaoi.logicBlock_visible();me._banheiroi.logicBlock_visible();me._serviosi.logicBlock_visible();me._sobre_o_lugar.logicBlock_visible(); });
-	player.addListener('varchanged_POR', function(args) { me._bsico0.logicBlock_text();me._cabides.logicBlock_text();me._roupa_de_cama.logicBlock_text();me._cobertores_e_travesseiros_extras.logicBlock_text();me._varal_para_secar_roupas.logicBlock_text();me._local_para_guardar_as_roupas_closet.logicBlock_text();me._bsico.logicBlock_text();me._microondas.logicBlock_text();me._louas_e_talheres.logicBlock_text();me._frigobar0.logicBlock_text();me._fogo.logicBlock_text();me._chaleira_de_gua_quente.logicBlock_text();me._cmeras_de_segurana_na_propriedade.logicBlock_text();me._mquina_de_lavar.logicBlock_text();me._secadora.logicBlock_text();me._frigobar.logicBlock_text();me._detector_de_fumaa.logicBlock_text();me._alarme_de_monxido_de_carbono.logicBlock_text();me._aquecimento_central.logicBlock_text();me._conexo_ethernet.logicBlock_text();me._hdtv_com_tv_a_cabo_premium.logicBlock_text();me._wifi0.logicBlock_text();me._espao_de_trabalho_exclusivo1.logicBlock_text();me._tranca_na_porta_do_quarto.logicBlock_text();me._garagem_residencial_gratuita_na_propriedade.logicBlock_text();me._ventilador_de_teto.logicBlock_text();me._secador_de_cabelo.logicBlock_text();me._xampu.logicBlock_text();me._condicionador.logicBlock_text();me._sabonete_para_o_corpo.logicBlock_text();me._agua_quente.logicBlock_text();me._wifi.logicBlock_text();me._espao_de_trabalho_exclusivo0.logicBlock_text();me._banheiro_.logicBlock_text();me._quarto_e_lavanderiab.logicBlock_text();me._entretenimentob.logicBlock_text();me._climatizaob.logicBlock_text();me._privacidade_e_seguranab.logicBlock_text();me._internet_e_escritriob.logicBlock_text();me._cozinha_e_sala_de_jantarb.logicBlock_text();me._estacionamento_e_instalaesb.logicBlock_text();me._serviosb.logicBlock_text();me._no_inclusob.logicBlock_text();me._sobre_o_lugar0.logicBlock_text();me._espao_de_trabalho_exclusivo.logicBlock_text();me._durante_sua_estadia.logicBlock_text();me._banheiro_menu.logicBlock_text();me._cozinha_menu.logicBlock_text();me._frigobar_menu.logicBlock_text();me._quarto_menu.logicBlock_text();me._quarto_menu.logicBlock_textcolor();me._garagem_menu.logicBlock_text();me._info_menu.logicBlock_text();me._tt_enter_vr.logicBlock_text();me._tt_unmute.logicBlock_text();me._tt_mute.logicBlock_text();me._iniciar0.logicBlock_text();me._indicativo2.logicBlock_text(); });
-	player.addListener('varchanged_ENG', function(args) { me._bsico0.logicBlock_text();me._cabides.logicBlock_text();me._roupa_de_cama.logicBlock_text();me._cobertores_e_travesseiros_extras.logicBlock_text();me._varal_para_secar_roupas.logicBlock_text();me._local_para_guardar_as_roupas_closet.logicBlock_text();me._bsico.logicBlock_text();me._microondas.logicBlock_text();me._louas_e_talheres.logicBlock_text();me._frigobar0.logicBlock_text();me._fogo.logicBlock_text();me._chaleira_de_gua_quente.logicBlock_text();me._cmeras_de_segurana_na_propriedade.logicBlock_text();me._mquina_de_lavar.logicBlock_text();me._secadora.logicBlock_text();me._frigobar.logicBlock_text();me._detector_de_fumaa.logicBlock_text();me._alarme_de_monxido_de_carbono.logicBlock_text();me._aquecimento_central.logicBlock_text();me._conexo_ethernet.logicBlock_text();me._hdtv_com_tv_a_cabo_premium.logicBlock_text();me._wifi0.logicBlock_text();me._espao_de_trabalho_exclusivo1.logicBlock_text();me._tranca_na_porta_do_quarto.logicBlock_text();me._garagem_residencial_gratuita_na_propriedade.logicBlock_text();me._ventilador_de_teto.logicBlock_text();me._secador_de_cabelo.logicBlock_text();me._xampu.logicBlock_text();me._condicionador.logicBlock_text();me._sabonete_para_o_corpo.logicBlock_text();me._agua_quente.logicBlock_text();me._wifi.logicBlock_text();me._espao_de_trabalho_exclusivo0.logicBlock_text();me._banheiro_.logicBlock_text();me._quarto_e_lavanderiab.logicBlock_text();me._entretenimentob.logicBlock_text();me._climatizaob.logicBlock_text();me._privacidade_e_seguranab.logicBlock_text();me._internet_e_escritriob.logicBlock_text();me._cozinha_e_sala_de_jantarb.logicBlock_text();me._estacionamento_e_instalaesb.logicBlock_text();me._serviosb.logicBlock_text();me._no_inclusob.logicBlock_text();me._sobre_o_lugar0.logicBlock_text();me._espao_de_trabalho_exclusivo.logicBlock_text();me._durante_sua_estadia.logicBlock_text();me._banheiro_menu.logicBlock_text();me._cozinha_menu.logicBlock_text();me._frigobar_menu.logicBlock_text();me._quarto_menu.logicBlock_text();me._quarto_menu.logicBlock_textcolor();me._garagem_menu.logicBlock_text();me._info_menu.logicBlock_text();me._tt_enter_vr.logicBlock_text();me._tt_unmute.logicBlock_text();me._tt_mute.logicBlock_text();me._iniciar0.logicBlock_text();me._indicativo2.logicBlock_text(); });
-	player.addListener('varchanged_ESP', function(args) { me._bsico0.logicBlock_text();me._cabides.logicBlock_text();me._roupa_de_cama.logicBlock_text();me._cobertores_e_travesseiros_extras.logicBlock_text();me._varal_para_secar_roupas.logicBlock_text();me._local_para_guardar_as_roupas_closet.logicBlock_text();me._bsico.logicBlock_text();me._microondas.logicBlock_text();me._louas_e_talheres.logicBlock_text();me._frigobar0.logicBlock_text();me._fogo.logicBlock_text();me._chaleira_de_gua_quente.logicBlock_text();me._cmeras_de_segurana_na_propriedade.logicBlock_text();me._mquina_de_lavar.logicBlock_text();me._secadora.logicBlock_text();me._frigobar.logicBlock_text();me._detector_de_fumaa.logicBlock_text();me._alarme_de_monxido_de_carbono.logicBlock_text();me._aquecimento_central.logicBlock_text();me._conexo_ethernet.logicBlock_text();me._hdtv_com_tv_a_cabo_premium.logicBlock_text();me._wifi0.logicBlock_text();me._espao_de_trabalho_exclusivo1.logicBlock_text();me._tranca_na_porta_do_quarto.logicBlock_text();me._garagem_residencial_gratuita_na_propriedade.logicBlock_text();me._ventilador_de_teto.logicBlock_text();me._secador_de_cabelo.logicBlock_text();me._xampu.logicBlock_text();me._condicionador.logicBlock_text();me._sabonete_para_o_corpo.logicBlock_text();me._agua_quente.logicBlock_text();me._wifi.logicBlock_text();me._espao_de_trabalho_exclusivo0.logicBlock_text();me._banheiro_.logicBlock_text();me._quarto_e_lavanderiab.logicBlock_text();me._entretenimentob.logicBlock_text();me._climatizaob.logicBlock_text();me._privacidade_e_seguranab.logicBlock_text();me._internet_e_escritriob.logicBlock_text();me._cozinha_e_sala_de_jantarb.logicBlock_text();me._estacionamento_e_instalaesb.logicBlock_text();me._serviosb.logicBlock_text();me._no_inclusob.logicBlock_text();me._sobre_o_lugar0.logicBlock_text();me._espao_de_trabalho_exclusivo.logicBlock_text();me._durante_sua_estadia.logicBlock_text();me._banheiro_menu.logicBlock_text();me._cozinha_menu.logicBlock_text();me._frigobar_menu.logicBlock_text();me._quarto_menu.logicBlock_text();me._quarto_menu.logicBlock_textcolor();me._garagem_menu.logicBlock_text();me._info_menu.logicBlock_text();me._tt_enter_vr.logicBlock_text();me._tt_unmute.logicBlock_text();me._tt_mute.logicBlock_text();me._iniciar0.logicBlock_text();me._indicativo2.logicBlock_text(); });
+	player.addListener('varchanged_POR', function(args) { me._bsico0.logicBlock_text();me._cabides.logicBlock_text();me._roupa_de_cama.logicBlock_text();me._cobertores_e_travesseiros_extras.logicBlock_text();me._varal_para_secar_roupas.logicBlock_text();me._local_para_guardar_as_roupas_closet.logicBlock_text();me._bsico.logicBlock_text();me._microondas.logicBlock_text();me._louas_e_talheres.logicBlock_text();me._frigobar0.logicBlock_text();me._fogo.logicBlock_text();me._chaleira_de_gua_quente.logicBlock_text();me._cmeras_de_segurana_na_propriedade.logicBlock_text();me._mquina_de_lavar.logicBlock_text();me._secadora.logicBlock_text();me._frigobar.logicBlock_text();me._detector_de_fumaa.logicBlock_text();me._alarme_de_monxido_de_carbono.logicBlock_text();me._aquecimento_central.logicBlock_text();me._conexo_ethernet.logicBlock_text();me._hdtv_com_tv_a_cabo_premium.logicBlock_text();me._wifi0.logicBlock_text();me._espao_de_trabalho_exclusivo1.logicBlock_text();me._tranca_na_porta_do_quarto.logicBlock_text();me._garagem_residencial_gratuita_na_propriedade.logicBlock_text();me._ventilador_de_teto.logicBlock_text();me._secador_de_cabelo.logicBlock_text();me._xampu.logicBlock_text();me._condicionador.logicBlock_text();me._sabonete_para_o_corpo.logicBlock_text();me._agua_quente.logicBlock_text();me._wifi.logicBlock_text();me._espao_de_trabalho_exclusivo0.logicBlock_text();me._banheiro_.logicBlock_text();me._quarto_e_lavanderiab.logicBlock_text();me._entretenimentob.logicBlock_text();me._climatizaob.logicBlock_text();me._privacidade_e_seguranab.logicBlock_text();me._internet_e_escritriob.logicBlock_text();me._cozinha_e_sala_de_jantarb.logicBlock_text();me._estacionamento_e_instalaesb.logicBlock_text();me._serviosb.logicBlock_text();me._no_inclusob.logicBlock_text();me._sobre_o_lugar0.logicBlock_text();me._espao_de_trabalho_exclusivo.logicBlock_text();me._durante_sua_estadia.logicBlock_text();me._banheiro_menu.logicBlock_text();me._cozinha_menu.logicBlock_text();me._frigobar_menu.logicBlock_text();me._quarto_menu.logicBlock_text();me._quarto_menu.logicBlock_textcolor();me._garagem_menu.logicBlock_text();me._info_menu.logicBlock_text();me._tt_enter_vr.logicBlock_text();me._tt_unmute.logicBlock_text();me._tt_mute.logicBlock_text();me._tt_fullscreen.logicBlock_text();me._iniciar0.logicBlock_text();me._indicativo2.logicBlock_text(); });
+	player.addListener('varchanged_ENG', function(args) { me._bsico0.logicBlock_text();me._cabides.logicBlock_text();me._roupa_de_cama.logicBlock_text();me._cobertores_e_travesseiros_extras.logicBlock_text();me._varal_para_secar_roupas.logicBlock_text();me._local_para_guardar_as_roupas_closet.logicBlock_text();me._bsico.logicBlock_text();me._microondas.logicBlock_text();me._louas_e_talheres.logicBlock_text();me._frigobar0.logicBlock_text();me._fogo.logicBlock_text();me._chaleira_de_gua_quente.logicBlock_text();me._cmeras_de_segurana_na_propriedade.logicBlock_text();me._mquina_de_lavar.logicBlock_text();me._secadora.logicBlock_text();me._frigobar.logicBlock_text();me._detector_de_fumaa.logicBlock_text();me._alarme_de_monxido_de_carbono.logicBlock_text();me._aquecimento_central.logicBlock_text();me._conexo_ethernet.logicBlock_text();me._hdtv_com_tv_a_cabo_premium.logicBlock_text();me._wifi0.logicBlock_text();me._espao_de_trabalho_exclusivo1.logicBlock_text();me._tranca_na_porta_do_quarto.logicBlock_text();me._garagem_residencial_gratuita_na_propriedade.logicBlock_text();me._ventilador_de_teto.logicBlock_text();me._secador_de_cabelo.logicBlock_text();me._xampu.logicBlock_text();me._condicionador.logicBlock_text();me._sabonete_para_o_corpo.logicBlock_text();me._agua_quente.logicBlock_text();me._wifi.logicBlock_text();me._espao_de_trabalho_exclusivo0.logicBlock_text();me._banheiro_.logicBlock_text();me._quarto_e_lavanderiab.logicBlock_text();me._entretenimentob.logicBlock_text();me._climatizaob.logicBlock_text();me._privacidade_e_seguranab.logicBlock_text();me._internet_e_escritriob.logicBlock_text();me._cozinha_e_sala_de_jantarb.logicBlock_text();me._estacionamento_e_instalaesb.logicBlock_text();me._serviosb.logicBlock_text();me._no_inclusob.logicBlock_text();me._sobre_o_lugar0.logicBlock_text();me._espao_de_trabalho_exclusivo.logicBlock_text();me._durante_sua_estadia.logicBlock_text();me._banheiro_menu.logicBlock_text();me._cozinha_menu.logicBlock_text();me._frigobar_menu.logicBlock_text();me._quarto_menu.logicBlock_text();me._quarto_menu.logicBlock_textcolor();me._garagem_menu.logicBlock_text();me._info_menu.logicBlock_text();me._tt_enter_vr.logicBlock_text();me._tt_unmute.logicBlock_text();me._tt_mute.logicBlock_text();me._tt_fullscreen.logicBlock_text();me._iniciar0.logicBlock_text();me._indicativo2.logicBlock_text(); });
+	player.addListener('varchanged_ESP', function(args) { me._bsico0.logicBlock_text();me._cabides.logicBlock_text();me._roupa_de_cama.logicBlock_text();me._cobertores_e_travesseiros_extras.logicBlock_text();me._varal_para_secar_roupas.logicBlock_text();me._local_para_guardar_as_roupas_closet.logicBlock_text();me._bsico.logicBlock_text();me._microondas.logicBlock_text();me._louas_e_talheres.logicBlock_text();me._frigobar0.logicBlock_text();me._fogo.logicBlock_text();me._chaleira_de_gua_quente.logicBlock_text();me._cmeras_de_segurana_na_propriedade.logicBlock_text();me._mquina_de_lavar.logicBlock_text();me._secadora.logicBlock_text();me._frigobar.logicBlock_text();me._detector_de_fumaa.logicBlock_text();me._alarme_de_monxido_de_carbono.logicBlock_text();me._aquecimento_central.logicBlock_text();me._conexo_ethernet.logicBlock_text();me._hdtv_com_tv_a_cabo_premium.logicBlock_text();me._wifi0.logicBlock_text();me._espao_de_trabalho_exclusivo1.logicBlock_text();me._tranca_na_porta_do_quarto.logicBlock_text();me._garagem_residencial_gratuita_na_propriedade.logicBlock_text();me._ventilador_de_teto.logicBlock_text();me._secador_de_cabelo.logicBlock_text();me._xampu.logicBlock_text();me._condicionador.logicBlock_text();me._sabonete_para_o_corpo.logicBlock_text();me._agua_quente.logicBlock_text();me._wifi.logicBlock_text();me._espao_de_trabalho_exclusivo0.logicBlock_text();me._banheiro_.logicBlock_text();me._quarto_e_lavanderiab.logicBlock_text();me._entretenimentob.logicBlock_text();me._climatizaob.logicBlock_text();me._privacidade_e_seguranab.logicBlock_text();me._internet_e_escritriob.logicBlock_text();me._cozinha_e_sala_de_jantarb.logicBlock_text();me._estacionamento_e_instalaesb.logicBlock_text();me._serviosb.logicBlock_text();me._no_inclusob.logicBlock_text();me._sobre_o_lugar0.logicBlock_text();me._espao_de_trabalho_exclusivo.logicBlock_text();me._durante_sua_estadia.logicBlock_text();me._banheiro_menu.logicBlock_text();me._cozinha_menu.logicBlock_text();me._frigobar_menu.logicBlock_text();me._quarto_menu.logicBlock_text();me._quarto_menu.logicBlock_textcolor();me._garagem_menu.logicBlock_text();me._info_menu.logicBlock_text();me._tt_enter_vr.logicBlock_text();me._tt_unmute.logicBlock_text();me._tt_mute.logicBlock_text();me._tt_fullscreen.logicBlock_text();me._iniciar0.logicBlock_text();me._indicativo2.logicBlock_text(); });
 	player.addListener('changenode', function(args) { me.callChildLogicBlocksHotspot_ht_node_changenode(); });
 	player.addListener('configloaded', function(args) { me.callChildLogicBlocksHotspot_ht_node_configloaded(); });
 	player.addListener('mouseover', function(args) { me.callChildLogicBlocksHotspot_ht_node_mouseover(); });
