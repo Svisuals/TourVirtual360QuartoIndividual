@@ -1,7 +1,7 @@
 // Garden Gnome Software - Skin
 // Pano2VR 6.1.13/18080
 // Filename: Airbnb.ggsk
-// Generated 2024-02-24T06:33:43
+// Generated 2024-02-24T06:36:59
 
 function pano2vrSkin(player,base) {
 	player.addVariable('indicativo', 2, false);
@@ -19649,8 +19649,8 @@ function pano2vrSkin(player,base) {
 		hs+='cursor : pointer;';
 		hs+='height : 32px;';
 		hs+='position : absolute;';
-		hs+='right : 10px;';
-		hs+='top : 0px;';
+		hs+='right : 3px;';
+		hs+='top : 60px;';
 		hs+='visibility : hidden;';
 		hs+='width : 32px;';
 		hs+='pointer-events:auto;';
@@ -19661,30 +19661,6 @@ function pano2vrSkin(player,base) {
 		}
 		el.ggElementNodeId=function() {
 			return player.getCurrentNode();
-		}
-		me._enter_vr.logicBlock_position = function() {
-			var newLogicStatePosition;
-			if (
-				((player.getViewerSize().width < 1084))
-			)
-			{
-				newLogicStatePosition = 0;
-			}
-			else {
-				newLogicStatePosition = -1;
-			}
-			if (me._enter_vr.ggCurrentLogicStatePosition != newLogicStatePosition) {
-				me._enter_vr.ggCurrentLogicStatePosition = newLogicStatePosition;
-				me._enter_vr.style[domTransition]='right 0s, top 0s';
-				if (me._enter_vr.ggCurrentLogicStatePosition == 0) {
-					me._enter_vr.style.right='3px';
-					me._enter_vr.style.top='60px';
-				}
-				else {
-					me._enter_vr.style.right='10px';
-					me._enter_vr.style.top='0px';
-				}
-			}
 		}
 		me._enter_vr.logicBlock_visible = function() {
 			var newLogicStateVisible;
@@ -19699,7 +19675,7 @@ function pano2vrSkin(player,base) {
 			}
 			if (me._enter_vr.ggCurrentLogicStateVisible != newLogicStateVisible) {
 				me._enter_vr.ggCurrentLogicStateVisible = newLogicStateVisible;
-				me._enter_vr.style[domTransition]='right 0s, top 0s';
+				me._enter_vr.style[domTransition]='';
 				if (me._enter_vr.ggCurrentLogicStateVisible == 0) {
 					me._enter_vr.style.visibility=(Number(me._enter_vr.style.opacity)>0||!me._enter_vr.style.opacity)?'inherit':'hidden';
 					me._enter_vr.ggVisible=true;
@@ -24327,7 +24303,6 @@ this.__div.style.top = vs.height / 2 + "px";
 	me._garagem_menu.logicBlock_scaling();
 	me._info_menu.logicBlock_position();
 	me._info_menu.logicBlock_scaling();
-	me._enter_vr.logicBlock_position();
 	me._button_mute.logicBlock_position();
 	me._button_fullscreen.logicBlock_position();
 	me._indicaes_de_uso.logicBlock_position();
@@ -24406,7 +24381,7 @@ this.__div.style.top = vs.height / 2 + "px";
 	me._indicativo2.logicBlock_text();
 	me._tt_fullscreen.logicBlock_position();
 	me._enter_vr.logicBlock_visible();
-	player.addListener('sizechanged', function(args) { me._quarto_e_lavanderiai.logicBlock_position();me._quarto_e_lavanderiai.logicBlock_scaling();me._cozinha_e_sala_de_jantari.logicBlock_position();me._cozinha_e_sala_de_jantari.logicBlock_scaling();me._no_inclusoi.logicBlock_position();me._no_inclusoi.logicBlock_scaling();me._entretenimentoi.logicBlock_position();me._entretenimentoi.logicBlock_scaling();me._internet_e_escritrioi.logicBlock_position();me._internet_e_escritrioi.logicBlock_scaling();me._privacidade_e_seguranai.logicBlock_position();me._privacidade_e_seguranai.logicBlock_scaling();me._estacionamento_e_instalaesi.logicBlock_position();me._estacionamento_e_instalaesi.logicBlock_scaling();me._climatizaoi.logicBlock_position();me._climatizaoi.logicBlock_scaling();me._banheiroi.logicBlock_position();me._banheiroi.logicBlock_scaling();me._serviosi.logicBlock_position();me._serviosi.logicBlock_scaling();me._info.logicBlock_position();me._info.logicBlock_scaling();me._sobre_o_lugar.logicBlock_position();me._sobre_o_lugar.logicBlock_scaling();me._menu.logicBlock_size();me._banheiro_menu.logicBlock_position();me._banheiro_menu.logicBlock_scaling();me._cozinha_menu.logicBlock_position();me._cozinha_menu.logicBlock_scaling();me._frigobar_menu.logicBlock_position();me._frigobar_menu.logicBlock_scaling();me._quarto_menu.logicBlock_position();me._quarto_menu.logicBlock_scaling();me._garagem_menu.logicBlock_position();me._garagem_menu.logicBlock_scaling();me._info_menu.logicBlock_position();me._info_menu.logicBlock_scaling();me._enter_vr.logicBlock_position();me._button_mute.logicBlock_position();me._button_fullscreen.logicBlock_position();me._indicaes_de_uso.logicBlock_position();me._indicaes_de_uso.logicBlock_scaling(); });
+	player.addListener('sizechanged', function(args) { me._quarto_e_lavanderiai.logicBlock_position();me._quarto_e_lavanderiai.logicBlock_scaling();me._cozinha_e_sala_de_jantari.logicBlock_position();me._cozinha_e_sala_de_jantari.logicBlock_scaling();me._no_inclusoi.logicBlock_position();me._no_inclusoi.logicBlock_scaling();me._entretenimentoi.logicBlock_position();me._entretenimentoi.logicBlock_scaling();me._internet_e_escritrioi.logicBlock_position();me._internet_e_escritrioi.logicBlock_scaling();me._privacidade_e_seguranai.logicBlock_position();me._privacidade_e_seguranai.logicBlock_scaling();me._estacionamento_e_instalaesi.logicBlock_position();me._estacionamento_e_instalaesi.logicBlock_scaling();me._climatizaoi.logicBlock_position();me._climatizaoi.logicBlock_scaling();me._banheiroi.logicBlock_position();me._banheiroi.logicBlock_scaling();me._serviosi.logicBlock_position();me._serviosi.logicBlock_scaling();me._info.logicBlock_position();me._info.logicBlock_scaling();me._sobre_o_lugar.logicBlock_position();me._sobre_o_lugar.logicBlock_scaling();me._menu.logicBlock_size();me._banheiro_menu.logicBlock_position();me._banheiro_menu.logicBlock_scaling();me._cozinha_menu.logicBlock_position();me._cozinha_menu.logicBlock_scaling();me._frigobar_menu.logicBlock_position();me._frigobar_menu.logicBlock_scaling();me._quarto_menu.logicBlock_position();me._quarto_menu.logicBlock_scaling();me._garagem_menu.logicBlock_position();me._garagem_menu.logicBlock_scaling();me._info_menu.logicBlock_position();me._info_menu.logicBlock_scaling();me._button_mute.logicBlock_position();me._button_fullscreen.logicBlock_position();me._indicaes_de_uso.logicBlock_position();me._indicaes_de_uso.logicBlock_scaling(); });
 	player.addListener('fullscreenenter', function(args) { me._button_image_normalscreen.logicBlock_visible();me._button_image_fullscreen.logicBlock_visible();me._tt_fullscreen.logicBlock_text(); });
 	player.addListener('fullscreenexit', function(args) { me._button_image_normalscreen.logicBlock_visible();me._button_image_fullscreen.logicBlock_visible();me._tt_fullscreen.logicBlock_text(); });
 	player.addListener('changenode', function(args) { me._quarto_e_lavanderiai.logicBlock_visible();me._bsico0.logicBlock_text();me._cabides.logicBlock_text();me._roupa_de_cama.logicBlock_text();me._cobertores_e_travesseiros_extras.logicBlock_text();me._varal_para_secar_roupas.logicBlock_text();me._local_para_guardar_as_roupas_closet.logicBlock_text();me._cozinha_e_sala_de_jantari.logicBlock_visible();me._bsico.logicBlock_text();me._microondas.logicBlock_text();me._louas_e_talheres.logicBlock_text();me._frigobar0.logicBlock_text();me._fogo.logicBlock_text();me._chaleira_de_gua_quente.logicBlock_text();me._no_inclusoi.logicBlock_visible();me._cmeras_de_segurana_na_propriedade.logicBlock_text();me._mquina_de_lavar.logicBlock_text();me._secadora.logicBlock_text();me._frigobar.logicBlock_text();me._detector_de_fumaa.logicBlock_text();me._alarme_de_monxido_de_carbono.logicBlock_text();me._aquecimento_central.logicBlock_text();me._entretenimentoi.logicBlock_visible();me._conexo_ethernet.logicBlock_text();me._hdtv_com_tv_a_cabo_premium.logicBlock_text();me._internet_e_escritrioi.logicBlock_visible();me._wifi0.logicBlock_text();me._espao_de_trabalho_exclusivo1.logicBlock_text();me._privacidade_e_seguranai.logicBlock_visible();me._tranca_na_porta_do_quarto.logicBlock_text();me._estacionamento_e_instalaesi.logicBlock_visible();me._garagem_residencial_gratuita_na_propriedade.logicBlock_text();me._climatizaoi.logicBlock_visible();me._ventilador_de_teto.logicBlock_text();me._banheiroi.logicBlock_visible();me._secador_de_cabelo.logicBlock_text();me._xampu.logicBlock_text();me._condicionador.logicBlock_text();me._sabonete_para_o_corpo.logicBlock_text();me._agua_quente.logicBlock_text();me._serviosi.logicBlock_visible();me._wifi.logicBlock_text();me._espao_de_trabalho_exclusivo0.logicBlock_text();me._banheiro_.logicBlock_text();me._quarto_e_lavanderiab.logicBlock_text();me._entretenimentob.logicBlock_text();me._climatizaob.logicBlock_text();me._privacidade_e_seguranab.logicBlock_text();me._internet_e_escritriob.logicBlock_text();me._cozinha_e_sala_de_jantarb.logicBlock_text();me._estacionamento_e_instalaesb.logicBlock_text();me._serviosb.logicBlock_text();me._no_inclusob.logicBlock_text();me._sobre_o_lugar.logicBlock_visible();me._sobre_o_lugar0.logicBlock_text();me._espao_de_trabalho_exclusivo.logicBlock_text();me._durante_sua_estadia.logicBlock_text();me._banheiro_menu.logicBlock_text();me._cozinha_menu.logicBlock_text();me._frigobar_menu.logicBlock_text();me._quarto_menu.logicBlock_text();me._quarto_menu.logicBlock_textcolor();me._garagem_menu.logicBlock_text();me._info_menu.logicBlock_text();me._tt_enter_vr.logicBlock_text();me._tt_unmute.logicBlock_text();me._tt_mute.logicBlock_text();me._iniciar0.logicBlock_text();me._indicativo2.logicBlock_text(); });
